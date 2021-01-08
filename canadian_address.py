@@ -5,16 +5,40 @@
 # This program is canadian address program
 
 
-import constants
+def address(add, stb, stm, city, pro, post, apt=None):
+    # this function checks the inputs
+    address = add
+    if apt is not None:
+        address = add + " " + stb + " " + stm + " " + city + " " + pro + " " + post + " " + apt
+    else:
+        address = add + " " + stb + " " + stm + " " + city + " " + pro + " " + post
+
+    return address
+
 
 def main():
-    name = input ("enter: ")
-     
-    if name = constants.province:
-         print("here we go{0}.".format(name))
+    # input
+    Apt_Number_str = None
 
+    Addressee_str = input("Enter addressee name:")
+    question = input("Do you have an Apt.Number? (y/n):")
+    if question == "Y" or question == "Yes":
+        Apt_Number_str = input("Enter the Apt. Number: ")
+    Street_number_str = input("Enter the street number:")
+    Street_name_str = input("Enter the street name:")
+    City_str = input("Enter your city:")
+    Province_str = input("Enter your province:")
+    Postal_Code = input("Enter the postal code: ")
+
+    if Apt_Number_str is not None:
+        address_titels = address(Addressee_str, Street_number_str,
+                                 Street_name_str, City_str, Province_str,
+                                 Postal_Code, Apt_Number_str)
     else:
-        print("no no")
+        address_titels = address(Addressee_str, Street_number_str,
+                                 Street_name_str, City_str, Province_str, Postal_Code)
+
+    print("Your address  {0}.".format(address_titels))
 
 
 if __name__ == "__main__":
